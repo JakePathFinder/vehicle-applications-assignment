@@ -30,15 +30,12 @@ public static class ServiceCollectionExtension
         });
         
         services.AddSingleton<IVehicleFactoryService<TVehicle>,TVehicleFactory>();
-        services.AddSingleton<IVehicleFactoryService<TVehicle>, VehicleFactoryService<TVehicle>>();
-        
+
         services.AddSingleton<IVehicleService, VehicleService<TVehicle>>();
         services.AddHostedService(provider => provider.GetRequiredService<IVehicleService>());
 
         services.AddSingleton<IVehicleObserver<TVehicle>,VehicleObserver<TVehicle>>();
         services.AddHostedService(provider => provider.GetRequiredService<IVehicleObserver<TVehicle>>());
-        
-        services.AddSingleton<IVehicleFactoryService<TVehicle>,TVehicleFactory>();
 
         services.AddSingleton<IVehicleRepo<TVehicle>, VehicleInMemRepo<TVehicle>>();
         
